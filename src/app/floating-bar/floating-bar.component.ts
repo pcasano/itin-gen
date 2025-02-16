@@ -14,8 +14,8 @@ export class FloatingBarComponent {
 
   onCancel() {
     this.processCancelEvent.emit(true);
-    console.log("from bar: " + true)
   }
+  
   onNext() {
     throw new Error('Method not implemented.');
   }
