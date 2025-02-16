@@ -1,18 +1,18 @@
-<form>
+<form [formGroup]="userForm">
     <h4 class="border-bottom pb-2 mb-5">Personal information</h4>
     <div class="form-group">
         <div class="row">
             <div class="col-md-4 col-12 mb-4">
                 <label for="firstName">Nombre</label>
-                <input type="text" class="form-control" id="firstName">
+                <input type="text" class="form-control" id="firstName" formControlName="firstName">
             </div>
             <div class="col-md-4 col-12 mb-4">
                 <label for="lastName1">Primer apellido</label>
-                <input type="text" class="form-control" id="lastName1">
+                <input type="text" class="form-control" id="lastName1" formControlName="lastName1">
             </div>
             <div class="col-md-4 col-12 mb-4">
                 <label for="lastName2">Segundo apellido</label>
-                <input type="text" class="form-control" id="lastName2">
+                <input type="text" class="form-control" id="lastName2" formControlName="lastName2">
             </div>
         </div>
 
@@ -99,7 +99,7 @@
 
     <div class="row d-flex justify-content-end mb-4">
         <div class="col-md-2 col-12 px-3">
-            <button type="submit" class="btn btn-primary w-100">Siguiente</button>
+            <button type="submit" class="btn btn-primary w-100" (click)="onNext()">Siguiente</button>
         </div>
     </div>
 
