@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-floating-bar',
@@ -7,8 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './floating-bar.component.scss'
 })
 export class FloatingBarComponent {
-onNext() {
-throw new Error('Method not implemented.');
-}
+
+
+  @Output() processCancelEvent = new EventEmitter<boolean>();
+
+
+  onCancel() {
+    this.processCancelEvent.emit(true);
+    console.log("from bar: " + true)
+  }
+  onNext() {
+    throw new Error('Method not implemented.');
+  }
 
 }

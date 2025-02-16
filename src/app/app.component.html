@@ -1,9 +1,12 @@
 <div class="container">
     <app-cards></app-cards>
+    @if(!isStartedSignal()) {
+    <app-start-process (processStartedEvent)="processEvent($event)"></app-start-process>
+    }
+    @if(isStartedSignal()) {
     <app-formular></app-formular>
-
-
+    }
 </div>
-
-
-<app-floating-bar></app-floating-bar>
+@if(isStartedSignal()) {
+<app-floating-bar (processCancelEvent)="cancelEvent($event)"></app-floating-bar>
+}
