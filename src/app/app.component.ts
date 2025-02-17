@@ -16,8 +16,6 @@ export class AppComponent {
 
   title = 'itin-gen';
 
-  //isStarted: boolean = false;
-
   isStartedSignal: WritableSignal<boolean> = signal(false);
 
 
