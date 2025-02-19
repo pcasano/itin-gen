@@ -1,7 +1,7 @@
-import {Component, inject, Signal, signal, WritableSignal} from '@angular/core';
-import { CardsComponent } from "./cards/cards.component";
-import { FloatingBarComponent } from "./form/floating-bar/floating-bar.component";
-import { StartProcessComponent } from "./form/start-process/start-process.component";
+import {Component, inject, Signal} from '@angular/core';
+import {CardsComponent} from "./cards/cards.component";
+import {FloatingBarComponent} from "./form/floating-bar/floating-bar.component";
+import {StartProcessComponent} from "./form/start-process/start-process.component";
 import {FormStore} from "./store/multi-step.store";
 import {FirstStepFormComponent} from "./form/first-step-form/first-step-form.component";
 import {SecondStepFormComponent} from "./form/second-step-form/second-step-form.component";
