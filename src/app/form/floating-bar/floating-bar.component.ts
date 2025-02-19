@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {FormStore} from "../../store/multi-step.store";
+import {FormStore} from "../store/multi-step.store";
 
 @Component({
   selector: 'app-floating-bar',
