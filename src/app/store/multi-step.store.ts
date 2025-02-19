@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Signal} from '@angular/core';
 import {ComponentStore} from '@ngrx/component-store';
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
@@ -14,11 +14,11 @@ const initialFormState = {
 }
 
 @Injectable()
-export class MoviesStore extends ComponentStore<FormState> {
+export class FormStore extends ComponentStore<FormState> {
 
-  readonly firstStepUserForm$: Observable<FormGroup> = this.select(state => state.firstStepUserForm);
+  readonly firstStepUserForm: Signal<FormGroup> = this.selectSignal(state => state.firstStepUserForm);
 
-  readonly step$: Observable<number> = this.select(state => state.step);
+  readonly step: Signal<number> = this.selectSignal(state => state.step);
 
   readonly updateFormData = this.updater((state, formData: FormState) => ({
     ...state,
