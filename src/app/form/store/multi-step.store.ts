@@ -1,7 +1,6 @@
-import {Injectable, signal, Signal} from '@angular/core';
+import {Injectable, Signal} from '@angular/core';
 import {ComponentStore} from '@ngrx/component-store';
 import {FormGroup} from "@angular/forms";
-import {Observable} from "rxjs";
 
 export interface FormState {
   firstStepUserForm: FormGroup;
