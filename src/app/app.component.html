@@ -1,12 +1,15 @@
 <div class="container">
-    <app-cards></app-cards>
-    @if(!isStartedSignal()) {
-    <app-start-process (processStartedEvent)="processEvent($event)"></app-start-process>
-    }
-    @if(isStartedSignal()) {
-    <app-formular></app-formular>
-    }
+  <app-cards></app-cards>
+  @if (step() === 0) {
+    <app-start-process></app-start-process>
+  } @else if (step() === 1) {
+    <app-first-step-form></app-first-step-form>
+  } @else if (step() === 2) {
+    <app-second-step-form></app-second-step-form>
+  }
 </div>
-@if(isStartedSignal()) {
-<app-floating-bar (processCancelEvent)="cancelEvent($event)"></app-floating-bar>
+@if (step() > 0) {
+  <app-floating-bar
+    [isBackButtonPresent]="step()>1"
+  ></app-floating-bar>
 }

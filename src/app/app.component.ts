@@ -1,23 +1,21 @@
-import { Component, signal, WritableSignal } from '@angular/core';
-import { FormularComponent } from "./formular/formular.component";
+import {Component, inject, Signal, signal, WritableSignal} from '@angular/core';
 import { CardsComponent } from "./cards/cards.component";
-import { FloatingBarComponent } from "./floating-bar/floating-bar.component";
-import { StartProcessComponent } from "./start-process/start-process.component";
+import { FloatingBarComponent } from "./form/floating-bar/floating-bar.component";
+import { StartProcessComponent } from "./form/start-process/start-process.component";
+import {FormStore} from "./store/multi-step.store";
+import {FirstStepFormComponent} from "./form/first-step-form/first-step-form.component";
+import {SecondStepFormComponent} from "./form/second-step-form/second-step-form.component";
 
 @Component({
   selector: 'app-root',
-  imports: [FormularComponent, CardsComponent, FloatingBarComponent, StartProcessComponent],
+  imports: [FirstStepFormComponent, CardsComponent, FloatingBarComponent, StartProcessComponent, SecondStepFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  isStartedSignal: WritableSignal<boolean> = signal(false);
 
-  processEvent(isStarted: boolean) {
-    this.isStartedSignal.set(isStarted);
-  }
+  multiStepStore = inject(FormStore);
 
-  cancelEvent(isCancel: boolean) {
-    this.isStartedSignal.set(!isCancel);
-  }
+  readonly step: Signal<number> = this.multiStepStore.step;
+
 }

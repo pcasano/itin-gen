@@ -3,12 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-formular',
+  selector: 'app-first-step-form',
   imports: [ReactiveFormsModule],
-  templateUrl: './formular.component.html',
-  styleUrl: './formular.component.scss'
+  templateUrl: './first-step-form.component.html',
+  styleUrl: './first-step-form.component.scss'
 })
-export class FormularComponent {
+export class FirstStepFormComponent {
 
 
   userForm: FormGroup;

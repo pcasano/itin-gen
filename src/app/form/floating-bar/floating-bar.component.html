@@ -1,0 +1,14 @@
+<div class="floating-bar d-flex align-items-center">
+  <div class="container d-flex justify-content-between">
+    <div>
+      <button type="submit" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+      @if (isBackButtonPresent) {
+        <button type="submit" class="btn btn-primary ml-3" (click)="onBack()">Atrás</button>
+      }
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onNext()">Siguiente</button>
+  </div>
+</div>
+
+
+

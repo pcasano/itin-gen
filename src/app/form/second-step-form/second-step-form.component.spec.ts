@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormularComponent } from './formular.component';
+import { SecondStepFormComponent } from './second-step-form.component';
 
-describe('FormularComponent', () => {
-  let component: FormularComponent;
-  let fixture: ComponentFixture<FormularComponent>;
+describe('SecondStepFormComponent', () => {
+  let component: SecondStepFormComponent;
+  let fixture: ComponentFixture<SecondStepFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormularComponent]
+      imports: [SecondStepFormComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormularComponent);
+    fixture = TestBed.createComponent(SecondStepFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

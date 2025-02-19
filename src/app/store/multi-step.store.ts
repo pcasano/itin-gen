@@ -1,4 +1,4 @@
-import {Injectable, Signal} from '@angular/core';
+import {Injectable, signal, Signal} from '@angular/core';
 import {ComponentStore} from '@ngrx/component-store';
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
@@ -10,11 +10,15 @@ export interface FormState {
 
 const initialFormState = {
   firstStepUserForm: new FormGroup({}),
-  step: 1
+  step: 0
 }
 
-@Injectable()
+@Injectable({providedIn: 'root',})
 export class FormStore extends ComponentStore<FormState> {
+
+  constructor() {
+    super(initialFormState);
+  }
 
   readonly firstStepUserForm: Signal<FormGroup> = this.selectSignal(state => state.firstStepUserForm);
 
@@ -28,6 +32,11 @@ export class FormStore extends ComponentStore<FormState> {
   readonly nextStep = this.updater((state) => ({
     ...state,
     step: state.step + 1,
+  }));
+
+  readonly cancel = this.updater((state) => ({
+    ...state,
+    step: 0,
   }));
 
   readonly prevStep = this.updater((state) => ({
