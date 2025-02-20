@@ -1,5 +1,6 @@
-import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {Component, inject, Input, Signal} from '@angular/core';
 import {FormStore} from "../store/multi-step.store";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-floating-bar',
@@ -11,12 +12,13 @@ export class FloatingBarComponent {
 
   multiStepStore = inject(FormStore);
 
-  @Output() processCancelEvent = new EventEmitter<boolean>();
-
   @Input() isBackButtonPresent = false;
 
+  @Input() isFirstUserFormValid = false;
+
+  readonly firstStepUserForm: Signal<FormGroup>= this.multiStepStore.firstStepUserForm;
+
   onCancel() {
-  this.processCancelEvent.emit(true);
     this.multiStepStore.cancel();
   }
 
@@ -25,8 +27,8 @@ export class FloatingBarComponent {
   }
 
   onBack() {
-    console.log("from bar", this.multiStepStore.firstStepUserForm())
-    console.log("from bar", this.multiStepStore.firstStepUserForm().get("firstName")?.value)
+    console.log("from bar", this.isFirstUserFormValid)
+    console.log("from bar", this.firstStepUserForm().get("firstName")?.value)
     this.multiStepStore.prevStep();
   }
 }

@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormStore} from "../store/multi-step.store";
 import {Subject, takeUntil} from "rxjs";
@@ -13,6 +13,8 @@ export class FirstStepFormComponent implements OnInit {
 
   @Input() defaultValuesFirstUserForm!: FormGroup;
 
+  @Output() isFirstUserFormValid: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   multiStepStore = inject(FormStore);
 
   private destroy$ = new Subject<void>();
@@ -24,25 +26,20 @@ export class FirstStepFormComponent implements OnInit {
     this.userForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName1: new FormControl('', [Validators.required]),
-      lastName2: new FormControl('', [Validators.required])
+      lastName2: new FormControl('', [])
     });
   }
 
-
-
   ngOnInit() {
-
-    console.log("from first step", this.defaultValuesFirstUserForm)
-    console.log("from first step", this.defaultValuesFirstUserForm.get("firstName")?.value)
-
     this.userForm.patchValue(this.defaultValuesFirstUserForm.value);
 
     this.userForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(values => {
-      this.multiStepStore.updateFirstStepUserForm(values);
-    });
+        this.isFirstUserFormValid.emit(this.userForm.valid);
+        console.log("from form: ", this.userForm.valid)
+        this.multiStepStore.updateFirstStepUserForm(values);
+      });
   }
-
 
 }

@@ -1,0 +1,19 @@
+.invalid-control-message {
+  color: #dc3545;
+}
+
+input.form-control {
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Focus state - Bootstrap default blue border on focus */
+input.form-control:focus {
+  border-color: #007bff; /* Bootstrap's default blue border color */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Invalid state - Red border when invalid */
+input.form-control.is-invalid {
+  border-color: #dc3545; /* Bootstrap's danger red color */
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}

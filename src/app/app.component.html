@@ -4,6 +4,7 @@
     <app-start-process></app-start-process>
   } @else if (step() === 1) {
     <app-first-step-form
+      (isFirstUserFormValid)="onFormValidityChanged($event)"
       [defaultValuesFirstUserForm]="firstStepForm()"
     ></app-first-step-form>
   } @else if (step() === 2) {
@@ -12,6 +13,7 @@
 </div>
 @if (step() > 0) {
   <app-floating-bar
+    [isFirstUserFormValid]="isFirstUserFormValid"
     [isBackButtonPresent]="step()>1"
   ></app-floating-bar>
 }

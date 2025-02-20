@@ -21,5 +21,11 @@ export class AppComponent {
 
   readonly firstStepForm: Signal<FormGroup> = this.multiStepStore.firstStepUserForm;
 
+  isFirstUserFormValid = false;
 
+  onFormValidityChanged(isValid: boolean) {
+    console.log("method called", isValid)
+    this.isFirstUserFormValid = isValid;
+    console.log("from parent: ", this.isFirstUserFormValid);
+  }
 }

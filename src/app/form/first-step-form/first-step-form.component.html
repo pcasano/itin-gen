@@ -1,100 +1,110 @@
 <form [formGroup]="userForm">
-    <h4 class="border-bottom pb-2 mb-5">Personal information</h4>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-4 col-12 mb-4">
-                <label for="firstName">Nombre</label>
-                <input type="text" class="form-control" id="firstName" formControlName="firstName">
-            </div>
-            <div class="col-md-4 col-12 mb-4">
-                <label for="lastName1">Primer apellido</label>
-                <input type="text" class="form-control" id="lastName1" formControlName="lastName1">
-            </div>
-            <div class="col-md-4 col-12 mb-4">
-                <label for="lastName2">Segundo apellido</label>
-                <input type="text" class="form-control" id="lastName2" formControlName="lastName2">
-            </div>
-        </div>
-
-        <div class="row pb-4">
-            <div class="col-md-6 col-12 mb-4">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <div class="col-md-3 col-6 mb-4">
-                <label>Sexo</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="masculino" id="masculino" value="masculino">
-                    <label class="form-check-label" for="masculino">
-                        Masculino
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="femenino" id="femenino" value="femenino">
-                    <label class="form-check-label" for="femenino">
-                        Femenino
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4">
-                <label class="text-left">Estado civil</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="married" id="married" value="married">
-                    <label class="form-check-label" for="married">
-                        Casado
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="single" id="single" value="single">
-                    <label class="form-check-label" for="single">
-                        Soltero
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 con-12 mb-4">
-                <label for="countryOfBirth">Pais de nacimiento</label>
-                <input type="text" class="form-control" id="countryOfBirth">
-            </div>
-            <div class="col-md-6 con-12 mb-4">
-                <label for="taxResidency">Residencia fiscal</label>
-                <input type="text" class="form-control" id="taxResidency">
-            </div>
-        </div>
+  <h4 class="border-bottom pb-2 mb-5">Personal information</h4>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4 col-12 mb-4">
+        <label for="firstName">Nombre</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName"
+               [class.is-invalid]="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched"
+               [class.is-valid]="userForm.get('firstName')?.valid && userForm.get('firstName')?.touched">
+        @if (userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched) {
+          <div class="invalid-control-message">Nombre es obligatorio</div>
+        }
+      </div>
+      <div class="col-md-4 col-12 mb-4">
+        <label for="lastName1">Primer apellido</label>
+        <input type="text" class="form-control" id="lastName1" formControlName="lastName1"
+        [class.is-invalid]="userForm.get('lastName1')?.invalid && userForm.get('lastName1')?.touched"
+        [class.is-valid]="userForm.get('lastName1')?.valid && userForm.get('lastName1')?.touched">
+        @if (userForm.get('lastName1')?.invalid && userForm.get('lastName1')?.touched) {
+          <div class="invalid-control-message">Primer apellido es obligatorio</div>
+        }
+      </div>
+      <div class="col-md-4 col-12 mb-4">
+        <label for="lastName2">Segundo apellido</label>
+        <input type="text" class="form-control" id="lastName2" formControlName="lastName2">
+      </div>
     </div>
 
-    <h4 class="border-bottom pb-2 mb-5 mt-5">Dirección postal</h4>
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-4 col-12 mb-4">
-                <label for="direction">Dirección</label>
-                <input type="text" class="form-control" id="direction">
-            </div>
-            <div class="col-md-4 col-12 mb-4">
-                <label for="city">Ciudad</label>
-                <input type="text" class="form-control" id="city">
-            </div>
-            <div class="col-md-4 col-12 mb-4">
-                <label for="postalCode">Código postal</label>
-                <input type="text" class="form-control" id="postalCode">
-            </div>
+    <div class="row pb-4">
+      <div class="col-md-6 col-12 mb-4">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="col-md-3 col-6 mb-4">
+        <label>Sexo</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="masculino" id="masculino" value="masculino">
+          <label class="form-check-label" for="masculino">
+            Masculino
+          </label>
         </div>
 
-        <div class="row">
-            <div class="col-md-4 col-12 mb-4">
-                <label for="province">Provincia</label>
-                <input type="text" class="form-control" id="province">
-            </div>
-            <div class="col-md-4 col-12 mb-4">
-                <label for="country">País</label>
-                <input type="text" class="form-control" id="country">
-            </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="femenino" id="femenino" value="femenino">
+          <label class="form-check-label" for="femenino">
+            Femenino
+          </label>
         </div>
-
+      </div>
+      <div class="col-md-3 col-6 mb-4">
+        <label class="text-left">Estado civil</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="married" id="married" value="married">
+          <label class="form-check-label" for="married">
+            Casado
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="single" id="single" value="single">
+          <label class="form-check-label" for="single">
+            Soltero
+          </label>
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-6 con-12 mb-4">
+        <label for="countryOfBirth">Pais de nacimiento</label>
+        <input type="text" class="form-control" id="countryOfBirth">
+      </div>
+      <div class="col-md-6 con-12 mb-4">
+        <label for="taxResidency">Residencia fiscal</label>
+        <input type="text" class="form-control" id="taxResidency">
+      </div>
+    </div>
+  </div>
+
+  <h4 class="border-bottom pb-2 mb-5 mt-5">Dirección postal</h4>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4 col-12 mb-4">
+        <label for="direction">Dirección</label>
+        <input type="text" class="form-control" id="direction">
+      </div>
+      <div class="col-md-4 col-12 mb-4">
+        <label for="city">Ciudad</label>
+        <input type="text" class="form-control" id="city">
+      </div>
+      <div class="col-md-4 col-12 mb-4">
+        <label for="postalCode">Código postal</label>
+        <input type="text" class="form-control" id="postalCode">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-12 mb-4">
+        <label for="province">Provincia</label>
+        <input type="text" class="form-control" id="province">
+      </div>
+      <div class="col-md-4 col-12 mb-4">
+        <label for="country">País</label>
+        <input type="text" class="form-control" id="country">
+      </div>
+    </div>
+
+  </div>
 
 </form>

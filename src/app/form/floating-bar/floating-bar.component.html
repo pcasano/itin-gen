@@ -6,7 +6,11 @@
         <button type="submit" class="btn btn-primary ml-3" (click)="onBack()">Atrás</button>
       }
     </div>
-    <button type="submit" class="btn btn-primary" (click)="onNext()">Siguiente</button>
+    <button type="submit" class="btn btn-primary"
+            (click)="onNext()"
+            [attr.disabled]="isFirstUserFormValid ? true : null"
+    >Siguiente
+    </button>
   </div>
 </div>
 
