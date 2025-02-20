@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Output} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormStore} from "../store/multi-step.store";
 
 @Component({
@@ -6,16 +6,12 @@ import {FormStore} from "../store/multi-step.store";
   imports: [],
   templateUrl: './start-process.component.html',
   styleUrl: './start-process.component.scss',
-/*  providers: [FormStore]*/
 })
 export class StartProcessComponent {
 
   multiStepStore = inject(FormStore);
 
-  @Output() processStartedEvent = new EventEmitter<boolean>();
-
   onStart() {
     this.multiStepStore.nextStep();
-    this.processStartedEvent.emit(true);
   }
 }
