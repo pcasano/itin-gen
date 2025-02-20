@@ -5,6 +5,7 @@ import {StartProcessComponent} from "./form/start-process/start-process.componen
 import {FormStore} from "./form/store/multi-step.store";
 import {FirstStepFormComponent} from "./form/first-step-form/first-step-form.component";
 import {SecondStepFormComponent} from "./form/second-step-form/second-step-form.component";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -17,5 +18,8 @@ export class AppComponent {
   multiStepStore = inject(FormStore);
 
   readonly step: Signal<number> = this.multiStepStore.step;
+
+  readonly firstStepForm: Signal<FormGroup> = this.multiStepStore.firstStepUserForm;
+
 
 }

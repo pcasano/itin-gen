@@ -1,6 +1,5 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import {Component, inject, Input, OnInit} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormStore} from "../store/multi-step.store";
 import {Subject, takeUntil} from "rxjs";
 
@@ -11,6 +10,8 @@ import {Subject, takeUntil} from "rxjs";
   styleUrl: './first-step-form.component.scss'
 })
 export class FirstStepFormComponent implements OnInit {
+
+  @Input() defaultValuesFirstUserForm!: FormGroup;
 
   multiStepStore = inject(FormStore);
 
@@ -27,12 +28,21 @@ export class FirstStepFormComponent implements OnInit {
     });
   }
 
+
+
   ngOnInit() {
+
+    console.log("from first step", this.defaultValuesFirstUserForm)
+    console.log("from first step", this.defaultValuesFirstUserForm.get("firstName")?.value)
+
+    this.userForm.patchValue(this.defaultValuesFirstUserForm.value);
+
     this.userForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(values => {
       this.multiStepStore.updateFirstStepUserForm(values);
     });
   }
+
 
 }

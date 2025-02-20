@@ -1,6 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {FormStore} from "../store/multi-step.store";
-import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-floating-bar',
@@ -16,9 +15,6 @@ export class FloatingBarComponent {
 
   @Input() isBackButtonPresent = false;
 
-  readonly a = toSignal(this.multiStepStore.firstStepUserForm$);
-
-
   onCancel() {
   this.processCancelEvent.emit(true);
     this.multiStepStore.cancel();
@@ -29,6 +25,8 @@ export class FloatingBarComponent {
   }
 
   onBack() {
+    console.log("from bar", this.multiStepStore.firstStepUserForm())
+    console.log("from bar", this.multiStepStore.firstStepUserForm().get("firstName")?.value)
     this.multiStepStore.prevStep();
   }
 }

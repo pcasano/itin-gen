@@ -3,7 +3,9 @@
   @if (step() === 0) {
     <app-start-process></app-start-process>
   } @else if (step() === 1) {
-    <app-first-step-form></app-first-step-form>
+    <app-first-step-form
+      [defaultValuesFirstUserForm]="firstStepForm()"
+    ></app-first-step-form>
   } @else if (step() === 2) {
     <app-second-step-form></app-second-step-form>
   }
