@@ -6,10 +6,11 @@ import {FormStore} from "./form/store/multi-step.store";
 import {FirstStepFormComponent} from "./form/first-step-form/first-step-form.component";
 import {SecondStepFormComponent} from "./form/second-step-form/second-step-form.component";
 import {FormGroup} from "@angular/forms";
+import {StepperComponent} from "./stepper/stepper.component";
 
 @Component({
   selector: 'app-root',
-  imports: [FirstStepFormComponent, CardsComponent, FloatingBarComponent, StartProcessComponent, SecondStepFormComponent],
+  imports: [FirstStepFormComponent, CardsComponent, FloatingBarComponent, StartProcessComponent, SecondStepFormComponent, StepperComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

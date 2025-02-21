@@ -1,5 +1,8 @@
 <div class="container">
   <app-cards></app-cards>
+  <app-stepper
+    [currentStep]="step()"
+  ></app-stepper>
   @if (step() === 0) {
     <app-start-process></app-start-process>
   } @else if (step() === 1) {

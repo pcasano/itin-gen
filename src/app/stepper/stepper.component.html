@@ -1,0 +1,12 @@
+<div class="my-5">
+  <div class="stepper d-flex justify-content-center align-items-center">
+    @for (step of steps; track step) {
+      <div class="step-indicator" [class.active]="currentStep === steps.indexOf(step)">
+        {{ steps.indexOf(step) }}
+      </div>
+      @if (steps.indexOf(step) < steps.length - 1) {
+        <div class="step-line"></div>
+      }
+    }
+  </div>
+</div>
