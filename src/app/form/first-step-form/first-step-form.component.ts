@@ -19,7 +19,6 @@ export class FirstStepFormComponent implements OnInit {
 
   private destroy$ = new Subject<void>();
 
-
   userForm: FormGroup;
 
   constructor() {
@@ -32,14 +31,12 @@ export class FirstStepFormComponent implements OnInit {
 
   ngOnInit() {
     this.userForm.patchValue(this.defaultValuesFirstUserForm.value);
-
+    this.isFirstUserFormValid.emit(this.userForm.valid);
     this.userForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(values => {
         this.isFirstUserFormValid.emit(this.userForm.valid);
-        console.log("from form: ", this.userForm.valid)
         this.multiStepStore.updateFirstStepUserForm(values);
       });
   }
-
 }

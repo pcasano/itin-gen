@@ -8,7 +8,7 @@
     </div>
     <button type="submit" class="btn btn-primary"
             (click)="onNext()"
-            [attr.disabled]="isFirstUserFormValid ? true : null"
+            [attr.disabled]="!isFirstUserFormValid ? true : null"
     >Siguiente
     </button>
   </div>
