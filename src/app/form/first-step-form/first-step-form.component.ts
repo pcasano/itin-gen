@@ -1,7 +1,7 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormStore} from "../store/multi-step.store";
-import {Subject, takeUntil} from "rxjs";
+import {debounceTime, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-first-step-form',
@@ -33,7 +33,9 @@ export class FirstStepFormComponent implements OnInit {
     this.userForm.patchValue(this.defaultValuesFirstUserForm.value);
     this.isFirstUserFormValid.emit(this.userForm.valid);
     this.userForm.valueChanges
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        debounceTime(1500),
+        takeUntil(this.destroy$))
       .subscribe(values => {
         this.isFirstUserFormValid.emit(this.userForm.valid);
         this.multiStepStore.updateFirstStepUserForm(values);
