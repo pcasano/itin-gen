@@ -1,8 +1,12 @@
 @if (!isSubmitted) {
   <h4>Personal information:</h4>
-  @for (key of formKeys; track key) {
-    <p>{{ key }}: {{ firstStepForm.get(key)?.value }}</p>
-  }
+  <p>Nombre:  {{ firstStepForm.get("firstName")?.value | formatValue }}</p>
+  <p>Primer apellido:  {{ firstStepForm.get("lastName1")?.value | formatValue }}</p>
+  <p>Segundo apellido:  {{ firstStepForm.get("lastName2")?.value | formatValue }}</p>
+  <p>Email:  {{ firstStepForm.get("email")?.value | formatValue }}</p>
+  <p>País de nacimiento:  {{ firstStepForm.get("countryOfBirth")?.value | formatValue }}</p>
+  <p>Residencia fiscal:  {{ firstStepForm.get("taxResidency")?.value | formatValue }}</p>
+
 } @else {
   <div class="d-flex justify-content-center pt-4">
     <div class="alert alert-success text-center" role="alert">

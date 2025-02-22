@@ -1,9 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
+import {FormatValuePipe} from "../format-value-pipe.pipe";
 
 @Component({
   selector: 'app-summary',
-  imports: [],
+  imports: [
+    FormatValuePipe
+  ],
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.scss'
 })
