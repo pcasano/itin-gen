@@ -34,7 +34,7 @@ export class FirstStepFormComponent implements OnInit {
     this.isFirstUserFormValid.emit(this.userForm.valid);
     this.userForm.valueChanges
       .pipe(
-        debounceTime(1500),
+        debounceTime(1000),
         takeUntil(this.destroy$))
       .subscribe(values => {
         this.isFirstUserFormValid.emit(this.userForm.valid);

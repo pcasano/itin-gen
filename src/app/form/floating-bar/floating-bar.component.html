@@ -1,16 +1,24 @@
 <div class="floating-bar d-flex align-items-center">
   <div class="container d-flex justify-content-between">
-    <div>
-      <button type="submit" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
-      @if (isBackButtonPresent) {
-        <button type="submit" class="btn btn-primary ml-3" (click)="onBack()">Atrás</button>
-      }
-    </div>
-    <button type="submit" class="btn btn-primary"
-            (click)="onNext()"
-            [attr.disabled]="!isFirstUserFormValid ? true : null"
-    >Siguiente
-    </button>
+    @if (isSubmitted) {
+      <button type="submit" class="btn btn-secondary" (click)="onGotoInit()">Volver</button>
+    } @else {
+      <div>
+        <button type="submit" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+        @if (isBackButtonPresent) {
+          <button type="submit" class="btn btn-primary ml-3" (click)="onBack()">Atrás</button>
+        }
+      </div>
+      @if (isSubmitButtonPresent) {
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Enviar</button>
+      } @else {
+        <button type="submit" class="btn btn-primary"
+                (click)="onNext()"
+                [attr.disabled]="!isFirstUserFormValid ? true : null"
+        >Siguiente
+        </button>
+    }
+    }
   </div>
 </div>
 

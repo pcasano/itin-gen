@@ -25,7 +25,13 @@ export class AppComponent {
 
   isFirstUserFormValid = false;
 
+  isSubmitted = false;
+
   onFormValidityChanged(isValid: boolean) {
     this.isFirstUserFormValid = isValid;
+  }
+
+  onFormSubmit(isSubmitted: boolean) {
+    this.isSubmitted = isSubmitted;
   }
 }

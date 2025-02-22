@@ -1,4 +1,14 @@
-<h4>Personal information:</h4>
-@for (key of formKeys; track key) {
-  <p>{{ key }}: {{ firstStepForm.get(key)?.value }}</p>
+@if (!isSubmitted) {
+  <h4>Personal information:</h4>
+  @for (key of formKeys; track key) {
+    <p>{{ key }}: {{ firstStepForm.get(key)?.value }}</p>
+  }
+} @else {
+  <div class="d-flex justify-content-center pt-4">
+    <div class="alert alert-success text-center" role="alert">
+      ✅ Datos enviados correctamente!
+    </div>
+  </div>
 }
+
+

@@ -11,6 +11,8 @@ export class SummaryComponent implements OnInit {
 
   @Input() firstStepForm!: FormGroup<any>;
 
+  @Input() isSubmitted: boolean = false;
+
   formKeys: string[] = [];
 
   ngOnInit(): void {

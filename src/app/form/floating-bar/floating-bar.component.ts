@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {FormStore} from "../store/multi-step.store";
 
 @Component({
@@ -13,7 +13,13 @@ export class FloatingBarComponent {
 
   @Input() isBackButtonPresent = false;
 
+  @Input() isSubmitButtonPresent = false;
+
   @Input() isFirstUserFormValid = false;
+
+  @Output() submitEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  isSubmitted = false;
 
   onCancel() {
     this.multiStepStore.cancel();
@@ -25,5 +31,16 @@ export class FloatingBarComponent {
 
   onBack() {
     this.multiStepStore.prevStep();
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    this.submitEvent.emit(this.isSubmitted);
+  }
+
+  onGotoInit() {
+    this.multiStepStore.cancel();
+    this.isSubmitted = false;
+    this.submitEvent.emit(this.isSubmitted);
   }
 }

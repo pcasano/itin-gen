@@ -15,6 +15,7 @@
   } @else if (step() === 3) {
     <app-summary
       [firstStepForm]="firstStepForm()"
+      [isSubmitted]="isSubmitted"
     ></app-summary>
   }
 </div>
@@ -22,5 +23,7 @@
   <app-floating-bar
     [isFirstUserFormValid]="isFirstUserFormValid"
     [isBackButtonPresent]="step()>1"
+    [isSubmitButtonPresent]="step()===3"
+    (submitEvent)="onFormSubmit($event)"
   ></app-floating-bar>
 }
