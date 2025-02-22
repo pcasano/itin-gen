@@ -1,0 +1,4 @@
+<h4>Personal information:</h4>
+@for (key of formKeys; track key) {
+  <p>{{ key }}: {{ firstStepForm.get(key)?.value }}</p>
+}

@@ -7,10 +7,11 @@ import {FirstStepFormComponent} from "./form/first-step-form/first-step-form.com
 import {SecondStepFormComponent} from "./form/second-step-form/second-step-form.component";
 import {FormGroup} from "@angular/forms";
 import {StepperComponent} from "./stepper/stepper.component";
+import {SummaryComponent} from "./form/summary/summary.component";
 
 @Component({
   selector: 'app-root',
-  imports: [FirstStepFormComponent, CardsComponent, FloatingBarComponent, StartProcessComponent, SecondStepFormComponent, StepperComponent],
+  imports: [FirstStepFormComponent, CardsComponent, FloatingBarComponent, StartProcessComponent, SecondStepFormComponent, StepperComponent, SummaryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
