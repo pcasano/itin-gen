@@ -4,11 +4,13 @@ import {FormControl, FormGroup} from "@angular/forms";
 
 export interface FormState {
   firstStepUserForm: FormGroup;
+ secondStepUserForm: FormGroup;
   step: number
 }
 
 const initialFormState = {
   firstStepUserForm: new FormGroup({}),
+  secondStepUserForm: new FormGroup({}),
   step: 0
 }
 
@@ -20,6 +22,8 @@ export class FormStore extends ComponentStore<FormState> {
   }
 
   readonly firstStepUserForm: Signal<FormGroup> = this.selectSignal(state => state.firstStepUserForm);
+
+  readonly secondStepUserForm: Signal<FormGroup> = this.selectSignal(state => state.secondStepUserForm);
 
   readonly step: Signal<number> = this.selectSignal(state => state.step);
 
@@ -47,6 +51,20 @@ export class FormStore extends ComponentStore<FormState> {
           state.firstStepUserForm.get(key)?.setValue(value);
         } else {
           state.firstStepUserForm.addControl(key, new FormControl(value));
+        }
+      });
+      return { ...state };
+    }
+  );
+
+  readonly updateSecondStepUserForm = this.updater(
+    (state, updatedValues: FormGroup) => {
+      Object.keys(updatedValues).forEach(key => {
+        const value = updatedValues[key as keyof typeof updatedValues];
+        if (state.secondStepUserForm.contains(key)) {
+          state.firstStepUserForm.get(key)?.setValue(value);
+        } else {
+          state.secondStepUserForm.addControl(key, new FormControl(value));
         }
       });
       return { ...state };

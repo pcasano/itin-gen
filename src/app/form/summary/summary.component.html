@@ -1,11 +1,21 @@
 @if (!isSubmitted) {
-  <h4>Personal information:</h4>
-  <p>Nombre:  {{ firstStepForm.get("firstName")?.value | formatValue }}</p>
-  <p>Primer apellido:  {{ firstStepForm.get("lastName1")?.value | formatValue }}</p>
-  <p>Segundo apellido:  {{ firstStepForm.get("lastName2")?.value | formatValue }}</p>
-  <p>Email:  {{ firstStepForm.get("email")?.value | formatValue }}</p>
-  <p>País de nacimiento:  {{ firstStepForm.get("countryOfBirth")?.value | formatValue }}</p>
-  <p>Residencia fiscal:  {{ firstStepForm.get("taxResidency")?.value | formatValue }}</p>
+  <div>
+    <h4>Personal information:</h4>
+    <p>Nombre:  {{ firstStepForm.get("firstName")?.value | formatValue }}</p>
+    <p>Primer apellido:  {{ firstStepForm.get("lastName1")?.value | formatValue }}</p>
+    <p>Segundo apellido:  {{ firstStepForm.get("lastName2")?.value | formatValue }}</p>
+    <p>Email:  {{ firstStepForm.get("email")?.value | formatValue }}</p>
+    <p>País de nacimiento:  {{ firstStepForm.get("countryOfBirth")?.value | formatValue }}</p>
+    <p>Residencia fiscal:  {{ firstStepForm.get("taxResidency")?.value | formatValue }}</p>
+  </div>
+  <div>
+    <h4>Personal information:</h4>
+    <p>Dirección: {{ secondStepForm.get("direction")?.value | formatValue }}</p>
+    <p>Ciudad: {{ secondStepForm.get("city")?.value | formatValue }}</p>
+    <p>Código postal: {{ secondStepForm.get("postalCode")?.value | formatValue }}</p>
+    <p>Provincia: {{ secondStepForm.get("province")?.value | formatValue }}</p>
+    <p>País: {{ secondStepForm.get("country")?.value | formatValue }}</p>
+  </div>
 
 } @else {
   <div class="d-flex justify-content-center pt-4">

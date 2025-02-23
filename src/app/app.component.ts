@@ -23,6 +23,8 @@ export class AppComponent {
 
   readonly firstStepForm: Signal<FormGroup> = this.multiStepStore.firstStepUserForm;
 
+  readonly secondStepForm: Signal<FormGroup> = this.multiStepStore.secondStepUserForm;
+
   isFirstUserFormValid = false;
 
   isSubmitted = false;

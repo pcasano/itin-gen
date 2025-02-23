@@ -3,7 +3,7 @@
   <div class="form-group">
     <div class="row">
       <div class="col-md-4 col-12 mb-4">
-        <label for="firstName">Nombre</label>
+        <label for="firstName">Nombre<span style="color: red;"> *</span></label>
         <input type="text" class="form-control" id="firstName" formControlName="firstName"
                [class.is-invalid]="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched"
                [class.is-valid]="userForm.get('firstName')?.valid && userForm.get('firstName')?.touched">
@@ -12,7 +12,7 @@
         }
       </div>
       <div class="col-md-4 col-12 mb-4">
-        <label for="lastName1">Primer apellido</label>
+        <label for="lastName1">Primer apellido<span style="color: red;"> *</span></label>
         <input type="text" class="form-control" id="lastName1" formControlName="lastName1"
         [class.is-invalid]="userForm.get('lastName1')?.invalid && userForm.get('lastName1')?.touched"
         [class.is-valid]="userForm.get('lastName1')?.valid && userForm.get('lastName1')?.touched">

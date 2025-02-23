@@ -12,7 +12,9 @@ import {FormatValuePipe} from "../format-value-pipe.pipe";
 })
 export class SummaryComponent implements OnInit {
 
-  @Input() firstStepForm!: FormGroup<any>;
+  @Input() firstStepForm!: FormGroup;
+
+  @Input() secondStepForm!: FormGroup;
 
   @Input() isSubmitted: boolean = false;
 

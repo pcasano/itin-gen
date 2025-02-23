@@ -11,7 +11,9 @@
       [defaultValuesFirstUserForm]="firstStepForm()"
     ></app-first-step-form>
   } @else if (step() === 2) {
-    <app-second-step-form></app-second-step-form>
+    <app-second-step-form
+      [defaultValuesSecondUserForm]="secondStepForm()">
+    </app-second-step-form>
   } @else if (step() === 3) {
     <app-summary
       [firstStepForm]="firstStepForm()"
